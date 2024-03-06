@@ -1,0 +1,25 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="ar">locale/unfy_ar.qm</file>
+        <file alias="bg">locale/unfy_bg.qm</file>
+        <file alias="de">locale/unfy_de.qm</file>
+        <file alias="en">locale/unfy_en.qm</file>
+        <file alias="es">locale/unfy_es.qm</file>
+        <file alias="fi">locale/unfy_fi.qm</file>
+        <file alias="fr">locale/unfy_fr.qm</file>
+        <file alias="it">locale/unfy_it.qm</file>
+        <file alias="ja">locale/unfy_ja.qm</file>
+        <file alias="ko">locale/unfy_ko.qm</file>
+        <file alias="nl">locale/unfy_nl.qm</file>
+        <file alias="pl">locale/unfy_pl.qm</file>
+        <file alias="pt">locale/unfy_pt.qm</file>
+        <file alias="ro">locale/unfy_ro.qm</file>
+        <file alias="ru">locale/unfy_ru.qm</file>
+        <file alias="sk">locale/unfy_sk.qm</file>
+        <file alias="th">locale/unfy_th.qm</file>
+        <file alias="tr">locale/unfy_tr.qm</file>
+        <file alias="vi">locale/unfy_vi.qm</file>
+        <file alias="zh_CN">locale/unfy_zh_CN.qm</file>
+        <file alias="zh_TW">locale/unfy_zh_TW.qm</file>
+    </qresource>
+</RCC>

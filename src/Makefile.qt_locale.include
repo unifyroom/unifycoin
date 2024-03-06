@@ -1,0 +1,22 @@
+QT_TS = \
+  qt/locale/unfy_ar.ts \
+  qt/locale/unfy_bg.ts \
+  qt/locale/unfy_de.ts \
+  qt/locale/unfy_en.ts \
+  qt/locale/unfy_es.ts \
+  qt/locale/unfy_fi.ts \
+  qt/locale/unfy_fr.ts \
+  qt/locale/unfy_it.ts \
+  qt/locale/unfy_ja.ts \
+  qt/locale/unfy_ko.ts \
+  qt/locale/unfy_nl.ts \
+  qt/locale/unfy_pl.ts \
+  qt/locale/unfy_pt.ts \
+  qt/locale/unfy_ro.ts \
+  qt/locale/unfy_ru.ts \
+  qt/locale/unfy_sk.ts \
+  qt/locale/unfy_th.ts \
+  qt/locale/unfy_tr.ts \
+  qt/locale/unfy_vi.ts \
+  qt/locale/unfy_zh_CN.ts \
+  qt/locale/unfy_zh_TW.ts

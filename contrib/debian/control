@@ -1,0 +1,65 @@
+Source: unfy
+Section: utils
+Priority: optional
+Maintainer: Holger Schinzel <holger@unifyroom.com>
+Uploaders: Holger Schinzel <holger@unifyroom.com>
+Build-Depends: debhelper,
+ devscripts,
+ automake,
+ libtool,
+ bash-completion,
+ libdb4.8++-dev,
+ pkg-config,
+ libevent-dev,
+ libboost-filesystem1.48-dev | libboost-filesystem-dev (>> 1.47),
+ libboost-thread1.48-dev | libboost-thread-dev (>> 1.47),
+ libboost-test1.48-dev | libboost-test-dev (>> 1.47),
+ libminiupnpc8-dev | libminiupnpc-dev,
+ qt4-qmake, libqt4-dev,
+ qttools5-dev-tools, qttools5-dev,
+ libqrencode-dev,
+ python,
+ libzmq3-dev
+Standards-Version: 3.9.2
+Homepage: https://unifyroom.com/
+Vcs-Git: git://github.com/unifyroom/unfy.git
+Vcs-Browser: https://github.com/unifyroom/unifycoin
+
+Package: unfyd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - daemon
+ Unifyroom is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Unifyroom uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Unifyroom Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides the daemon, unfyd, and the CLI tool
+ unfy-cli to interact with the daemon.
+
+Package: unfy-qt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - Qt GUI
+ Unifyroom is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Unifyroom uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Unifyroom Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides Unifyroom-Qt, a GUI for Unifyroom based on Qt.
+
+Package: unfy-tx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer digital currency - standalone transaction tool
+ Unifyroom is an experimental new digital currency that enables instant, private
+ payments to anyone, anywhere in the world. Unifyroom uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Unifyroom Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides unfy-tx, a command-line transaction creation
+ tool which can be used without a unfy daemon.  Some means of
+ exchanging minimal transaction data with peers is still required.

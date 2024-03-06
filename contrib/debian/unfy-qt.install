@@ -1,0 +1,6 @@
+usr/local/bin/unfy-qt usr/bin
+share/pixmaps/unfy32.xpm usr/share/pixmaps
+share/pixmaps/unfy16.xpm usr/share/pixmaps
+share/pixmaps/unfy128.png usr/share/pixmaps
+debian/unfy-qt.desktop usr/share/applications
+debian/unfy-qt.protocol usr/share/kde4/services/

@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[unfy.unfy_ents]
+file_filter = src/qt/locale/unfy_<lang>.ts
+source_file = src/qt/locale/unfy_en.xlf
+source_lang = en

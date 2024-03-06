@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Unifyroom Core
+Comment=Unifyroom P2P Cryptocurrency
+Comment[de]=Verbinde mit dem Unifyroom peer-to-peer Netzwerk
+Comment[fr]=Unifyroom, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Unifyroom, eşten eşe kriptografik sanal para birimi
+Exec=unfy-qt %u
+Terminal=false
+Type=Application
+Icon=unfy128
+MimeType=x-scheme-handler/unfy;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=Unifyroom-qt
