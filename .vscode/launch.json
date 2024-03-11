@@ -24,7 +24,7 @@
             "name": "Debugging Daemon",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/dashd",
+            "program": "${workspaceFolder}/src/unfyd",
             "args": [
                 "-printtoconsole"
             ],
@@ -51,7 +51,7 @@
             "name": "Debugging Qt",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/qt/dash-qt",
+            "program": "${workspaceFolder}/src/qt/unfy-qt",
             "args": [
                 "-printtoconsole"
             ],
@@ -60,7 +60,7 @@
             "environment": [
                 {
                     "name": "DISPLAY",
-                    "value": "172.21.32.1:0.0",
+                    "value": "172.30.240.1:0.0",
                 },
                 {
                     "name": "QT_XKB_CONFIG_ROOT",

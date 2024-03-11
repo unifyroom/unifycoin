@@ -10,7 +10,7 @@
  */
 
 #include <founder_payment.h>
-#include <rpc/server.h>
+// #include <rpc/server.h>
 
 #include <logging.h>
 #include <chainparams.h>
@@ -30,7 +30,7 @@ CAmount FounderPayment::getFounderPaymentAmount(int blockHeight, CAmount blockRe
 	 return 0;
 }
 
-void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutFounderRet) {
+bool FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHeight, CAmount blockReward, CTxOut& txoutFounderRet) {
     // make sure it's not filled yet
     CAmount founderPayment = getFounderPaymentAmount(nBlockHeight, blockReward);
 //	if(founderPayment == 0) {
@@ -41,8 +41,15 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     txoutFounderRet = CTxOut();
 	  // fill payee with the foundFounderRewardStrcutureFounderRewardStrcutureer address
 	  CTxDestination founderAddr = DecodeDestination(founderAddress);
-	  if(!IsValidDestination(founderAddr))
-	    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid Founder Address: %s", founderAddress.c_str()));
+
+
+	//   if(!IsValidDestination(founderAddr))
+	//     throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Invalid Founder Address: %s", founderAddress.c_str()));
+
+	if(!IsValidDestination(founderAddr)) {
+		return false;
+	}
+	
 	  CScript payee = GetScriptForDestination(founderAddr);
     // GET FOUNDER PAYMENT VARIABLES SETUP
 
@@ -51,6 +58,8 @@ void FounderPayment::FillFounderPayment(CMutableTransaction& txNew, int nBlockHe
     txoutFounderRet = CTxOut(founderPayment, payee);
     txNew.vout.push_back(txoutFounderRet);
     LogPrintf("FounderPayment::FillFounderPayment -- Founder payment %lld to %s\n", founderPayment, founderAddress.c_str());
+
+	return true;
 }
 
 bool FounderPayment::IsBlockPayeeValid(const CTransaction& txNew, const int height, const CAmount blockReward) {

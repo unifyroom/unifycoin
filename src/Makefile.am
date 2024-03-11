@@ -127,6 +127,7 @@ endif
 .PHONY: FORCE check-symbols check-security
 # unifyroom core #
 BITCOIN_CORE_H = \
+  founder_payment.h \
   addrdb.h \
   addressindex.h \
   spentindex.h \
@@ -666,6 +667,7 @@ libbitcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_consensus_a_SOURCES = \
   amount.h \
   founder_payment.h \
+  founder_payment.cpp \
   arith_uint256.cpp \
   arith_uint256.h \
   bls/bls.cpp \
@@ -933,10 +935,18 @@ unfy_wallet_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(BDB_LIBS) $(EVENT_PTHREADS
 # unfyconsensus library #
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
-libunfyconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitcoin_crypto_base_a_SOURCES) $(libbitcoin_consensus_a_SOURCES)
 
-libunfyconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libunfyconsensus_la_LIBADD = $(LIBUNFYBLS) $(LIBSECP256K1) $(GMP_LIBS)
+libunfyconsensus_la_SOURCES = \
+  support/cleanse.cpp \
+  script/standard.h \
+  script/standard.cpp \
+  key_io.h \
+  $(crypto_libbitcoin_crypto_base_a_SOURCES) \
+  $(libbitcoin_consensus_a_SOURCES)
+
+# libunfyconsensus_la_LDFLAGS = $(AM_LDFLAGS) $(RELDFLAGS) $(PTHREAD_FLAGS) -no-undefined
+libunfyconsensus_la_LDFLAGS = $(AM_LDFLAGS) $(RELDFLAGS) $(PTHREAD_FLAGS)
+libunfyconsensus_la_LIBADD = $(BACKTRACE_LIB) $(LIBUNFYBLS) $(LIBSECP256K1) $(GMP_LIBS) $(BOOST_LIBS) $(EVENT_PTHREADS_LIBS) 
 libunfyconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
 libunfyconsensus_la_CPPFLAGS += -I$(srcdir)/unfybls/include -I$(srcdir)/unfybls/depends/relic/include -I$(srcdir)/unfybls/depends/minialloc/include
 libunfyconsensus_la_CPPFLAGS += -I$(srcdir)/immer
