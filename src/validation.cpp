@@ -3734,13 +3734,15 @@ bool CheckBlock(const CBlockIndex* pindexPrev, const CBlock& block, BlockValidat
 
     CAmount blockRewardk = 0;
     int nHeight = 2;
-    bool isGenesis = false;
+    bool isGenesis = true;
 
     if(pindexPrev != nullptr){
         blockRewardk = GetBlockSubsidy(pindexPrev, Params().GetConsensus());
         nHeight = pindexPrev->nHeight + 1;
-        isGenesis = true;
+        isGenesis = false;
     }
+
+    // LogPrintf("asdasdasdasd height %d\n", nHeight);
 
     for (const auto& tx : block.vtx) {
         TxValidationState tx_state;
@@ -4270,7 +4272,13 @@ bool ChainstateManager::ProcessNewBlock(const CChainParams& chainparams, const s
         // malleability that cause CheckBlock() to fail; see e.g. CVE-2012-2459 and
         // https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2019-February/016697.html.  Because CheckBlock() is
         // not very expensive, the anti-DoS benefits of caching failure (of a definitely-invalid block) are not substantial.
-        bool ret = CheckBlock(pindex, *pblock, state, chainparams.GetConsensus());
+
+        const CBlockIndex* pindexC = ActiveChainstate().m_chain.Tip();
+        // if(pindexC != nullptr){
+        //     LogPrintf("asdasdasdasd height %d\n", pindexC->nHeight);
+        // }
+
+        bool ret = CheckBlock(pindexC, *pblock, state, chainparams.GetConsensus());
         if (ret) {
             // Store to disk
             ret = ActiveChainstate().AcceptBlock(pblock, state, &pindex, fForceProcessing, nullptr, fNewBlock);

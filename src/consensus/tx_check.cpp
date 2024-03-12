@@ -66,15 +66,13 @@ bool CheckTransaction(const CTransaction& tx, TxValidationState& state, int nHei
             return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-cb-length");
 
         // karena forking
-        printf("heightasdasdasdasd %d \n", nHeight);
-        const int startCheck = 10;
+        const int startCheck = 3871;
         if(nHeight > startCheck) {
             FounderPayment founderPayment = Params().GetConsensus().nFounderPayment;
             CAmount founderReward = founderPayment.getFounderPaymentAmount(nHeight, blockReward);
             int founderStartHeight = founderPayment.getStartBlock();
             bool isValid = founderPayment.IsBlockPayeeValid(tx,nHeight, blockReward);
 
-            printf("height %d - %d -- %ld --- %d\n", nHeight, founderStartHeight, founderReward, isValid);
             if(nHeight > founderStartHeight && founderReward && !isValid) {
                 return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-cb-founder-payment-not-found");
             }
