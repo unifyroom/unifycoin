@@ -168,7 +168,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
 {
     assert(pindexLast != nullptr);
     assert(pblock != nullptr);
-    // const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
+    const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
 
     // // this is only active on devnets
     // if (pindexLast->nHeight < params.nMinimumDifficultyBlocks) {
@@ -184,6 +184,10 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // if (params.fPowNoRetargeting) {
     //     return bnPowLimit.GetCompact();
     // }
+
+    if (pblock->GetBlockTime() > pindexLast->GetBlockTime() + 2 * 60 * 60) {
+        return bnPowLimit.GetCompact(); //asdasd
+    }
 
     // if (params.fPowAllowMinDifficultyBlocks) {
     //     // recent block is more than 2 hours old
